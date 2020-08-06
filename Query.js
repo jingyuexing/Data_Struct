@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-05 22:16:18
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-07 02:26:59
+ * @Last Modified time: 2020-08-07 04:02:12
  */
 class Query {
     /**
@@ -64,11 +64,11 @@ class Query {
         if (typeof object != "object") return object;
         let item = [];
         Object.keys(object).map(i => {
-            let val = this.Jmap(object[i]);
-            if (typeof val == "object") val.map(j => {
+            let val = this.Jmap(object[i]); //递归判断是否是一个对象，若不是则跳过，若是则进一步遍历内部的对象
+            if (typeof val == "object") val.map(ele => {
                 item.push({
-                    key: i + "." + j.key,
-                    value: j.value
+                    key: i + "." + ele.key,
+                    value: ele.value
                 });
             });
             else item.push({
