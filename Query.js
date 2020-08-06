@@ -58,7 +58,7 @@ class Query {
     /**
      * JSON-map 对对象进行深度遍历操作
      * @param {object}   object   需要遍历的对象
-     * @return {array} 遍历后的数组
+     * @return {object[]} 遍历后的数组
      */
     Jmap(object) {
         if (typeof object != "object") return object;
