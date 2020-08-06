@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-05 22:16:18
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-07 01:54:24
+ * @Last Modified time: 2020-08-07 02:14:49
  */
 class Query {
     /**
@@ -27,7 +27,11 @@ class Query {
                     throw Error("this is Not Json File");
                 }
             } catch (e) {
-                this.create(name);
+                // who care?
+            }
+            if(!this.data){
+                this.data = {};
+                this.push();
             }
         }
     }
@@ -39,7 +43,10 @@ class Query {
     add(name, data) {
         var items = [];
         items.push(data)
-        if (toString.call(this.data[name]) === "object Array") {
+        function isArray(val){
+            return toString.call(val) === "[object Array]";
+        }
+        if (isArray(this.data[name])) {
             this.data[name].push(data);
             console.log(toString.call(this.data[name]) === "object Array")
         } else {
@@ -145,6 +152,11 @@ class Query {
      */
     getSheet(name) {
         return this.data[name];
+    }
+    dropSheet(name){
+        this.data[name] = null;
+        this.push();
+        return this;
     }
 }
 module.exports = Query;
