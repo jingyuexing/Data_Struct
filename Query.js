@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-05 22:16:18
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-07 02:14:49
+ * @Last Modified time: 2020-08-07 02:26:59
  */
 class Query {
     /**
@@ -158,75 +158,8 @@ class Query {
         this.push();
         return this;
     }
+    ls(){
+        console.table(this.All());
+    }
 }
 module.exports = Query;
-// class Query {
-//     constructor(databaseFile) {
-//         this.databaseName = databaseFile;
-//         this.data = readJson(this.databaseName);
-//         this.position = "";
-//     }
-//     /**
-//      * 关闭链接并且保存数据
-//      * @return {Boolean} 返回bool值
-//      */
-//     close() {
-//         writeJSON(this.databaseName, this.data);
-//         return true;
-//     }
-//     /**
-//      * 搜索数据库 如果找到则返回数据库数据
-//      * @param  {string} name 数据库的项的名称
-//      * @return {Object}      一个JSON对象
-//      */
-//     search(name) {
-//         if (name != '') {
-//             var dataList = Object.keys(this.data);
-//             if (dataList.includes(name)) {
-//                 this.position = name;
-//                 return [this.data[name],this];
-//             } else {
-//                 throw Error(`表${name}不存在,请仔细查看是否是拼写错误或是有空格`)
-//             }
-//         }
-//     }
-//     *
-//      * 添加数据到key
-//      * @param {Object} data 数据
-//      * @param {string} key  键值
-//     add(data,key=this.position){
-//         var dataBaseList = Object.keys(this.data);
-//         if(dataBaseList.includes(key)){
-//             if(isArray(this.data[key])){
-//                 this.data[key].push(data);
-//             }else if(isObject(this.data[key])){
-//                 this.data[key] = data;
-//             }
-//         }
-//         return this.close();
-//     }
-//     /**
-//      * 返回用户上次查询到的数据库当中的数据
-//      * @return {Object} JSON对象
-//      */
-//     history(){
-//         return this.data[this.position];
-//     }
-//     /**
-//      * 创建文档
-//      * @param  {string} name 文档名
-//      * @param  {Object} data JSON对象数据
-//      * @return {this}      返回自身
-//      */
-//     crateDocument(name,data){
-//         writeJSON(`DB/${name}.json`,data);
-//         return this;
-//     }
-//     createBase(name){
-//         this.data[name]=[];
-//         return this.data;
-//     }
-//     all(){
-//         return this.data;
-//     }
-// }
