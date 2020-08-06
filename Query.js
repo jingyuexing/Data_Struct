@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-05 22:16:18
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-07 04:22:06
+ * @Last Modified time: 2020-08-07 04:02:12
  */
 class Query {
     /**
@@ -61,14 +61,11 @@ class Query {
      * @return {object[]} 遍历后的数组
      */
     Jmap(obj) {
-        function isObject(val){
-            return toString.call(val) === "[object Object]";
-        }
-        if (!isObject(obj)) return obj;
+        if (typeof obj != "object") return obj;
         let item = [];
         Object.keys(obj).map(i => {
             let val = this.Jmap(obj[i]); //递归判断是否是一个对象，若不是则跳过，若是则进一步遍历内部的对象
-            if (isObject(val)) val.map(ele => {
+            if (typeof val == "object") val.map(ele => {
                 item.push({
                     key: i + "." + ele.key,
                     value: ele.value
