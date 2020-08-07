@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-05 22:16:18
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-07 04:02:12
+ * @Last Modified time: 2020-08-07 05:29:14
  */
 class Query {
     /**
@@ -29,7 +29,7 @@ class Query {
             } catch (e) {
                 // who care?
             }
-            if(!this.data){
+            if (!this.data) {
                 this.data = {};
                 this.push();
             }
@@ -43,7 +43,8 @@ class Query {
     add(name, data) {
         var items = [];
         items.push(data)
-        function isArray(val){
+
+        function isArray(val) {
             return toString.call(val) === "[object Array]";
         }
         if (isArray(this.data[name])) {
@@ -153,12 +154,12 @@ class Query {
     getSheet(name) {
         return this.data[name];
     }
-    dropSheet(name){
+    dropSheet(name) {
         this.data[name] = null;
         this.push();
         return this;
     }
-    ls(){
+    ls() {
         console.table(this.All());
     }
 }
