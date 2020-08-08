@@ -164,3 +164,6 @@ class Query {
     }
 }
 module.exports = Query;
+
+var data = new Query("package");
+console.table(data.All())
