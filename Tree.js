@@ -56,4 +56,4 @@ t.add(56,"root");
 t.add(45,12);
 t.add(89,45);
 
-console.log(t.show(t.find(56)));
+console.log(t.find(12))

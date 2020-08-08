@@ -28,6 +28,7 @@ class Query {
                 }
             } catch (e) {
                 // who care?
+                this.create(name);
             }
             if (!this.data) {
                 this.data = {};
@@ -49,7 +50,6 @@ class Query {
         }
         if (isArray(this.data[name])) {
             this.data[name].push(data);
-            console.log(toString.call(this.data[name]) === "object Array")
         } else {
             this.data[name] = items;
         }
@@ -111,7 +111,8 @@ class Query {
     create(name) {
         var fs = require("fs");
         var f = false;
-        fs.writeFile(`./DB/${name}.json`, JSON.stringify({}), {
+        this.data = {};
+        fs.writeFile(`./DB/${name}.json`, JSON.stringify(this.data), {
             encoding: "utf-8"
         }, (err) => {
             if (err) throw err;
@@ -165,5 +166,9 @@ class Query {
 }
 module.exports = Query;
 
-var data = new Query("package");
-console.table(data.All())
+(function(){
+    var data = new Query();
+    data.create("test");
+    data.add("someThing",{"protocol":"http"});
+    data.ls();
+})();
