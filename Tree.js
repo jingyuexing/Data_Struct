@@ -2,7 +2,7 @@
  * @Author: Jingyuexing
  * @Date:   2020-08-07 21:28:51
  * @Last Modified by:   Jingyuexing
- * @Last Modified time: 2020-08-08 02:11:16
+ * @Last Modified time: 2020-08-08 15:28:49
  */
 var Tree = (function() {
     function node(element) {
@@ -10,7 +10,6 @@ var Tree = (function() {
         this.data = element;
         this.parent = null;
     }
-
     function Tree() {
         this.pos = this.root = new node("root");
     }
